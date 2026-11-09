@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पुणे महानगर परिवहन महामंडळ लि.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#b52626">
+</head>
+
+<body class="ticket-body">
+    <div class="ticket-page">
+        <div class="top-navigation">
+            <a class="close-link" href="index.html" aria-label="Back to form">✕</a>
+            <div>
+                <a href="#" onclick="return false">Need Help?</a>
+                <a href="ticket-history.html">All Tickets</a>
+            </div>
+        </div>
+
+        <div class="ticket-card" id="ticketCard">
+            <div class="ticket-header">पुणे महानगर परिवहन महामंडळ लि.</div>
+
+            <div class="ticket-main">
+                <div class="ticket-summary">
+                    <div>
+                        <span>Route</span>
+                        <strong id="routeNumber"></strong>
+                    </div>
+                    <div>
+                        <span>Tickets count</span>
+                        <strong>1F</strong>
+                    </div>
+                    <div>
+                        <span>Fare</span>
+                        <strong id="fare"></strong>
+                    </div>
+                </div>
+
+                <div class="journey">
+                    <div class="journey-stop journey-start" id="startRoute"></div>
+                    <span class="journey-arrow">⟶</span>
+                    <div class="journey-stop journey-end" id="endRoute"></div>
+                </div>
+
+                <div class="ticket-divider"></div>
+
+                <div class="time-details">
+                    <div>
+                        <span>Booking Time</span>
+                        <strong id="bookingTime"></strong>
+                    </div>
+                    <div>
+                        <span>Validity Time</span>
+                        <strong id="validTime"></strong>
+                    </div>
+                </div>
+
+                <div class="reference-number" id="ticketId"></div>
+                <div class="ticket-divider bottom-divider"></div>
+
+                <div class="logo-area">
+                    <!-- Put your image in this project folder and name it logo.png.
+                         You can change the filename in the src attribute if needed. -->
+                    <img src="logo.png" alt="Bus logo" class="demo-logo-image" id="demoLogo">
+                </div>
+
+                <div class="expiry-text" id="expiryText">
+                    Expires In <span id="countdown">00:30:00</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="qr-button" type="button" onclick="toggleDemoQR()">
+            <span>▦</span> Show QR Code
+        </button>
+
+
+
+
+
+        <script src="script.js"></script>
+        <script>
+            function toggleDemoQR() {
+                const qr = document.getElementById("demoQR");
+                qr.hidden = !qr.hidden;
+            }
+        </script>
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("./service-worker.js")
+                        .then(() => console.log("PWA Service Worker Registered"))
+                        .catch(error => console.error("PWA Error:", error));
+                });
+            }
+        </script>
+</body>
+
+</html>

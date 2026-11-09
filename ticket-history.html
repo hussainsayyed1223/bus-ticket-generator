@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket History</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#b52626">
+</head>
+
+<body class="history-body">
+    <main class="history-page">
+        <nav class="history-navigation">
+            <a href="index.html">← Generate New Ticket</a>
+            <a href="ticket.html">Latest Ticket</a>
+        </nav>
+
+        <header class="history-header">
+            <h1>Ticket History</h1>
+            <p>All tickets generated on this browser</p>
+        </header>
+
+        <section id="ticketHistoryList" class="history-list">
+            <p class="empty-history">Loading ticket history...</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .then(() => console.log("PWA Service Worker Registered"))
+                    .catch(error => console.error("PWA Error:", error));
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#b52626">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2>BUS TICKET</h2>
+            <p>Online Ticket Generator</p>
+        </header>
+
+        <main class="form-container">
+            <h2>Enter Journey Details</h2>
+            <p class="subtitle">Fill in the details to generate a ticket.</p>
+
+            <form id="ticketForm">
+                <div class="input-group">
+                    <label for="routeNumber">Route Number</label>
+                    <input type="text" id="routeNumber" placeholder="Enter route number" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="startRoute">Starting Point</label>
+                    <input type="text" id="startRoute" placeholder="Enter starting point" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="endRoute">Destination</label>
+                    <input type="text" id="endRoute" placeholder="Enter destination" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="fare">Ticket Fare (₹)</label>
+                    <input type="number" id="fare" placeholder="Enter ticket fare" min="1" step="0.01" required>
+                </div>
+
+                <button type="submit" id="generateBtn">Generate Ticket</button>
+            </form>
+
+            <a class="history-link form-history-link" href="ticket-history.html">View Ticket History</a>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .then(() => console.log("PWA Service Worker Registered"))
+                    .catch(error => console.error("PWA Error:", error));
+            });
+        }
+    </script>
+</body>
+
+</html>
